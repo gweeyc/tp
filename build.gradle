@@ -12,7 +12,6 @@ repositories {
 dependencies {
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.8.1'
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.8.1'
-    testCompile("org.junit.jupiter:junit-jupiter-params:5.8.1")
     implementation group:'com.google.guava', name:'guava', version: '31.0.1-jre'
 }
 
@@ -36,8 +35,8 @@ application {
 }
 
 shadowJar {
-    archiveBaseName = "justbook"
-    archiveClassifier = null
+    archiveBaseName.set("justbook")
+    archiveClassifier.set(null)
 }
 
 checkstyle {
