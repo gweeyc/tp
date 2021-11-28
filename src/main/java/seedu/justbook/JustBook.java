@@ -1,6 +1,5 @@
 package seedu.justbook;
 
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.DateTimeException;
@@ -24,6 +23,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
+
 import static java.lang.System.exit;
 import static java.util.Comparator.comparing;
 
@@ -143,7 +143,7 @@ public class JustBook {
                     delAll.execute(appointments);
 
                 } else if (inputContent.contains("/b")) {
-                    String[] dateRange = inputContent.split(" ",3);
+                    String[] dateRange = inputContent.split(" ", 3);
                     LocalDate startDate = LocalDate.parse(dateRange[1], DateTimeFormatter.ofPattern("yyyy-M-d"));
                     LocalDate endDate = LocalDate.parse(dateRange[2], DateTimeFormatter.ofPattern("yyyy-M-d"));
 
@@ -167,7 +167,7 @@ public class JustBook {
                     //displays user's complete list of bookings in the database
                     displayRecords(listNum, totalRecords);
                 } else if (inputContent.contains("/b")) {
-                    String[] dateRange = inputContent.split(" ",3);
+                    String[] dateRange = inputContent.split(" ", 3);
                     LocalDate startDate = LocalDate.parse(dateRange[1], DateTimeFormatter.ofPattern("yyyy-M-d"));
                     LocalDate endDate = LocalDate.parse(dateRange[2], DateTimeFormatter.ofPattern("yyyy-M-d"));
                     showRange(startDate, endDate);
@@ -181,7 +181,8 @@ public class JustBook {
                     System.out.println("You have entered an unknown or invalid date, please try again!");
                 }
                 break;
-            case "block": case "unblock":
+            case "block":
+            case "unblock":
                 setBlockRules(commandWord, inputContent);
                 break;
             case "help":
@@ -308,7 +309,6 @@ public class JustBook {
                 .filter(date -> weekEnds.contains(date.getDayOfWeek()))
                 .forEach(JustBook::weekendListings);
     }
-
 
     protected static void setBlockRules(String command, String inputContent) {
         String[] parts = inputContent.split(" ", 2);
